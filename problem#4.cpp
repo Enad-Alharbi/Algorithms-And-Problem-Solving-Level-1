@@ -5,42 +5,40 @@ using namespace std;
 // This program will ask the user to enter his/her Age and Driver License and then print Hired if age greater than 21 and has driver license, or Rejcted.
 
 
-int ReadAge()
-{
+struct stInfo{
     short age;
-
-    cout << "Enter your age please: \n";
-    cin >> age;
-
-    return age;
-}
-
-bool ReadDriverLicense()
-{
     bool hasDriverLicense;
+};
 
-    cout << "Do you have driver license? (Enter 0 for No, 1 for Yes): \n";
-    cin >> hasDriverLicense;
+stInfo ReadInfo()
+{
+    stInfo info;
 
-    return hasDriverLicense;
+    cout << "Enter your age: \n";
+    cin >> info.age;
+
+    cout << "Do you have a Driver License? (Enter 1 for Yes and 0 for No): \n";
+    cin >> info.hasDriverLicense;
+
+    return info;
 }
 
-string CheckHiringValidity(bool hasDriverLicense, int age)
+bool IsAccepted(stInfo info)
 {
-    if(age > 21 && hasDriverLicense)
-        return "Hired";
+    return (info.age > 21 && info.hasDriverLicense);
+}
+
+void PrintResult(stInfo info)
+{
+    if(IsAccepted(info))
+        cout << "Hired!\n";
     else
-        return "Rejected";
-}
-
-void PrintHiringValidity(string result)
-{
-    cout << "You are " << result << "!\n";
+        cout << "Rejected!\n";
 }
 
 int main()
 {
-    PrintHiringValidity(CheckHiringValidity(ReadDriverLicense(), ReadAge()));
-
+    PrintResult(ReadInfo());
+    
     return 0;
 }
