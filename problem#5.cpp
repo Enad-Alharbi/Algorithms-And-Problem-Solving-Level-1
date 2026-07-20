@@ -29,7 +29,14 @@ stInfo ReadInfo()
 
 bool IsAccepted(stInfo info)
 {
-    return ((info.age > 21 && info.hasDriverLicense) || (info.hasReccomendation));
+    if (info.hasReccomendation)
+    {
+        return true;
+    }
+    else
+    {
+        return (info.age > 21 && info.hasDriverLicense);
+    }
 }
 
 void printResult(stInfo info)
