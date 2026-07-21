@@ -14,21 +14,20 @@ int ReadNumber()
     return number;
 }
 
-float CalculateHalfOfNumber(int number)
+float CalculateHalfNumber(int number)
 {
-    float halfOfNumber = (float)number / 2;
-
-    return halfOfNumber;
+    return (float)number / 2;;
 }
 
-void PrintHalfOfNumber(float halfOfNumber)
+void PrintResults(int number)
 {
-    cout << "Half of " << (halfOfNumber*2) << " is " << halfOfNumber << endl;
+    string result = "Half of " + to_string(number) + " is " + to_string(CalculateHalfNumber(number));
+    cout << result << endl;
 }
 
 int main()
 {
-    PrintHalfOfNumber(CalculateHalfOfNumber(ReadNumber()));
+    PrintResults(ReadNumber());
 
     return 0;
 }
