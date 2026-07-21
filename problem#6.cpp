@@ -4,32 +4,43 @@ using namespace std;
 
 // This program will ask the user to enter his first name and last name and then print them on the screen.
 
-struct stPerson{
+struct stInfo{
     string firstName;
     string lastName;
 };
 
-stPerson ReadPerson()
+stInfo ReadInfo()
 {
-    stPerson person;
+    stInfo info;
 
     cout << "Enter your First Name please: \n";
-    cin >> person.firstName;
+    cin >> info.firstName;
 
     cout << "Enter you Last Name please: \n";
-    cin >> person.lastName;
+    cin >> info.lastName;
 
-    return person;
+    return info;
 }
 
-void PrintFullName(stPerson person)
+string GetFullName(stInfo info, bool reversed)
 {
-    cout << "Your Full Name is: " << person.firstName << " " << person.lastName << endl;
+    string fullName;
+    if(reversed)
+        fullName = info.lastName + " " + info.firstName;
+    else
+        fullName = info.firstName + " " + info.lastName;
+
+    return fullName;
+}
+
+void PrintFullName(string fullName)
+{
+    cout << "Your Full Name is: " << fullName << endl;
 }
 
 int main()
 {
-    PrintFullName(ReadPerson());
+    PrintFullName(GetFullName(ReadInfo(), 0));
 
     return 0;
 }
