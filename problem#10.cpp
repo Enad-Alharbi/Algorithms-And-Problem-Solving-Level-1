@@ -16,9 +16,14 @@ void ReadMarks(int &mark1, int &mark2, int &mark3)
     cin >> mark3;
 }
 
+int SumOfThreeMarks(int mark1, int mark2, int mark3)
+{
+    return mark1 + mark2 + mark3;
+}
+
 float CalculateMarksAverage(int mark1, int mark2, int mark3)
 {
-    return (float)(mark1+mark2+mark3) / 3;
+    return (float)SumOfThreeMarks(mark1, mark2, mark3) / 3;
 }
 
 void PrintMarksAverage(float marksAverage)
