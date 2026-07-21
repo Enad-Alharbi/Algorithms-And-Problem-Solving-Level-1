@@ -21,9 +21,9 @@ int CalculateMaxNumber(int number1,int number2)
         return number2;
 }
 
-void PrintMaxNumber(int number1, int number2)
+void PrintMaxNumber(int max)
 {
-    cout << "The Maximum number between " << number1 << " And " << number2 << " is " << CalculateMaxNumber(number1, number2);
+    cout << "The Maximum number is " << max;
 }
 
 int main()
@@ -31,7 +31,7 @@ int main()
     int number1, number2;
 
     ReadNumbers(number1, number2);
-    PrintMaxNumber(number1, number2);
+    PrintMaxNumber(CalculateMaxNumber(number1, number2));
 
     return 0;
 }
