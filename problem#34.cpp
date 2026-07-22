@@ -4,7 +4,7 @@ using namespace std;
 
 // This program will ask the user to enter Total Sales and then calculate and print the total commision.
 
-int ReadTotalSales()
+float ReadTotalSales()
 {
     int totalSales;
 
@@ -14,45 +14,31 @@ int ReadTotalSales()
     return totalSales;
 }
 
-
-int CalculateCommissions(int totalSales)
+float GetCommissionPercentage(float totalSales)
 {
-    int totalCommission = 0;
-
-    if(totalSales >= 1000000)
-    {
-        totalCommission = 0.01 * totalSales;
-        return totalCommission;
-    }
-    else if(totalSales >= 500000)
-    {
-        totalCommission = 0.02 * totalSales;
-        return totalCommission;
-    }
-    else if(totalSales >= 100000)
-    {
-        totalCommission = 0.03 * totalSales;
-        return totalCommission;
-    }
-    else if(totalSales >= 50000)
-    {
-        totalCommission = 0.05 * totalSales;
-        return totalCommission;
-    }
+    if (totalSales >= 1000000)
+        return 0.01;
+    else if (totalSales >= 500000)
+        return 0.02;
+    else if (totalSales >= 100000)
+        return 0.03;
+    else if (totalSales >= 50000)
+        return 0.05;
     else
-    {
-        return totalCommission;
-    }
+        return 0.00;
 }
 
-void PrintTotalCommission(int totalSales)
+float CalculateTotalCommission(float totalSales)
 {
-    cout << "Total Commission = " << CalculateCommissions(totalSales);
+    return totalSales * GetCommissionPercentage(totalSales);
 }
 
 int main()
 {
-    PrintTotalCommission(ReadTotalSales());
+    float totalSales = ReadTotalSales();
+
+    cout << "\nCommission Percentage = " << GetCommissionPercentage(totalSales) << endl;
+    cout << "\nTotal Commission = " << CalculateTotalCommission(totalSales) << endl;
 
     return 0;
 }
