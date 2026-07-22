@@ -4,23 +4,21 @@ using namespace std;
 
 // This program will ask the user to enter a number N, and then calculate and print the factorial of number N.
 
-int ReadPositiveNumber()
+int ReadPositiveNumber(string message)
 {
     int number;
 
     do
     {
-        cout << "Please enter a positive number: \n";
+        cout << message << endl;
         cin >> number;
     } while (number < 0);
 
     return number;
 }
 
-int CalculateFactorial_UsingForLoop(int number)
+int Factorial(int number)
 {
-    cout << "\n*------------Using For Loop------------*\n";
-    
     int factorial = 1;
 
     for(int i = number; i >= 1; i--)
@@ -31,45 +29,9 @@ int CalculateFactorial_UsingForLoop(int number)
     return factorial;
 }
 
-int CalculateFactorial_UsingWhileLoop(int number)
-{
-    cout << "\n*------------Using While Loop------------*\n";
-
-    int factorial = 1;
-    int counter = number;
-
-    while(counter >= 1)
-    {
-        factorial *= counter;
-        counter--;
-    }
-    
-    return factorial;
-}
-
-int CalculateFactorial_UsingDoWhileLoop(int number)
-{
-    cout << "\n*------------Using Do While Loop------------*\n";
-
-    int factorial = 1;
-    int counter = number;
-
-    do
-    {
-        factorial *= counter;
-        counter--;
-    } while (counter >= 1);
-
-    return factorial;
-}
-
 int main()
 {
-    int number = ReadPositiveNumber();
-
-    cout << CalculateFactorial_UsingForLoop(number);
-    cout << CalculateFactorial_UsingWhileLoop(number);
-    cout << CalculateFactorial_UsingDoWhileLoop(number);
+    cout << Factorial(ReadPositiveNumber("Please enter a positive number: "));
 
     return 0;
 }
