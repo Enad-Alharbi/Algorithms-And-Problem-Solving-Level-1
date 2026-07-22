@@ -18,7 +18,7 @@ float ReadNumber(string message)
 
 enOperationType ReadOperationType()
 {
-    char operationType;
+    char operationType = '+';
 
     do
     {
