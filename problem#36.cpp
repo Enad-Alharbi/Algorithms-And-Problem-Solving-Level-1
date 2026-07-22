@@ -4,48 +4,55 @@ using namespace std;
 
 // This program will ask the user to enter two numbers Number1, Number2, and operation type (+, -, *, /) and then calculate number1 <operationType> number2.
 
-void ReadNumbers(int &number1, int &number2)
-{
-    cout << "Please enter Number1: \n";
-    cin >> number1;
+enum enOperationType {add = '+', subtract = '-', multiply = '*', divide = '/'};
 
-    cout << "Please enter Number2: \n";
-    cin >> number2;
+float ReadNumber(string message)
+{
+    float number;
+    
+    cout << message << endl;
+    cin >> number;
+
+    return number;
 }
 
-void ReadOperationType(char &operationType)
+enOperationType ReadOperationType()
 {
+    char operationType;
+
     do
     {
-        cout << "Please enter Operation Type (+, -, *, /): \n";
+        cout << "Please enter operation type (+, -, *, /): \n";
         cin >> operationType;
     } while (operationType != '+' && operationType != '-' && operationType != '*' && operationType != '/');
-
+    
+    return (enOperationType) operationType;
 }
 
-float Calculate(int number1, int number2, char operationType)
+float Calculate(float number1, float number2, enOperationType operationType)
 {
     switch (operationType){
-        case '+':
+        case enOperationType::add:
             return number1 + number2;
-        case '-': 
+        case enOperationType::subtract: 
             return number1 - number2;
-        case '*':
+        case enOperationType::multiply:
             return number1 * number2;
-        case '/':
-            return float(number1) / number2;
+        case enOperationType::divide:
+            return number1 / number2;
+        default:
+            return number1 + number2;
     }
 }
 
 int main()
 {
-    int number1, number2;
-    char operationType;
+    float number1 = ReadNumber("Please enter Number1: ");
+    float number2 = ReadNumber("Please enter Number2: ");
 
-    ReadNumbers(number1, number2);
-    ReadOperationType(operationType);
+    enOperationType operationType = ReadOperationType();
 
-    cout << number1 << " " << operationType << " " << number2 << " = " << Calculate(number1, number2, operationType);
+    cout << number1 << " " << (char)operationType << " " << number2 << " = " << Calculate(number1, number2, operationType);
 
     return 0;
 }
