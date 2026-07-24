@@ -4,25 +4,32 @@ using namespace std;
 
 // This program will ask the user to enter a number N, and keep asking the user to enter the number until the user enters -99, then print the sum on the screen.
 
-int ReadNumber()
+float ReadNumber(string message)
 {
-    int number;
+    float number;
 
-    cout << "Please enter a number: \n";
+    cout << message << endl;
     cin >> number;
 
     return number;
 }
 
-int SumNumbersUntilMinusNinetyNine(int number)
+float SumNumbersUntilMinusNinetyNine()
 {
-    int sum = 0;
+    int sum = 0, number = 0, counter = 1;
 
-    while(number != -99)
+    do
     {
+        number = ReadNumber("Please enter Number [" + to_string(counter) + "]: ");
+        
+        if (number == -99)
+        {
+            break;
+        }
+
         sum += number;
-        number = ReadNumber();
-    }
+        counter++;
+    } while (number != -99);
 
     return sum;
 }
@@ -34,7 +41,7 @@ void PrintSum(int sum)
 
 int main()
 {
-    PrintSum(SumNumbersUntilMinusNinetyNine(ReadNumber()));
+    PrintSum(SumNumbersUntilMinusNinetyNine());
 
     return 0;
 }
